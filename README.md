@@ -20,7 +20,7 @@ For more information see [vsdev][vsdev]
 
 Needed packages:
 
-    sudo zypper install libftdi1-devel
+    sudo zypper install libftdi1-devel cmake
 
 Needed patterns:
 
@@ -52,7 +52,37 @@ with contents:
 
 upload bootloader.bin
 
+       ./upload-openocd.sh bootloader.bin
+
 second file starts at 0x2000
+
+## Blink sample
+
+### Compile
+
+    cd Blink
+
+#### Bare Metal version
+
+    ./make.sh
+
+#### Bootloader version
+
+     ./make.sh -DUSE_BOOTLOADER=1
+
+### Upload
+
+#### Bare Metal
+
+Start openocd daemon in another terminal: `openocd -f openocd.cfg` (start in
+root dir)
+Then upload
+      
+      ./upload-openocd.sh Blink/build/blink.bin
+
+#### Bootloader version
+
+     ./upload-bootloader.sh Blink/build/blink.bin
 
 
 [vsdev]: http://dev.frozeneskimo.com/notes/cortex_cmsis/
