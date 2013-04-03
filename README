@@ -7,4 +7,9 @@ Step one, get a compiler:
 
 Compile your own: http://www.arklyffe.com/main/2010/08/29/arm-gcc-toolchain-build/
 
-Or this this binary: https://sourcery.mentor.com/GNUToolchain/package9742/public/arm-none-eabi/arm-2011.09-69-arm-none-eabi.bin
+Or this this binary: 
+gui installer:
+https://sourcery.mentor.com/GNUToolchain/package9742/public/arm-none-eabi/arm-2011.09-69-arm-none-eabi.bin
+
+tar ball:
+https://sourcery.mentor.com/GNUToolchain/package9740/public/arm-none-eabi/arm-2011.09-69-arm-none-eabi-i686-pc-linux-gnu.tar.bz2
