@@ -4,7 +4,6 @@ How to do some low-level arm development using the Blueboard LPC1768-H
 
 ## Compiler
 
-
 [Compile your own](http://www.arklyffe.com/main/2010/08/29/arm-gcc-toolchain-build/ )
 
 
@@ -58,6 +57,8 @@ second file starts at 0x2000
 
 ## Blink sample
 
+Create cm3_checksum tool by running `./prepare.sh`
+
 ### Compile
 
     cd Blink
@@ -96,5 +97,26 @@ gdb will think the target is paused, but it's actually running, so start by cont
 	(gdb) continue
 
 Now you can break the target with Ctrl-C, and use gdb as normal
+
+
+To expand macros/defines, use "-g3"
+
+### Eclipse
+
+GDB hardware debug.
+
+Launcher: Standard GDB Hardware Debugging Launcher
+
+Set GDB command to arm-none-eabi-gdb
+
+Remote TCP/IP localhost:3333 
+
+Startup command: monitor reset halt
+
+### Other
+
+To use malloc/free from newlib, implement `sbrk`.
+
+
 
 [vsdev]: http://dev.frozeneskimo.com/notes/cortex_cmsis/

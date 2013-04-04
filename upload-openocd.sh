@@ -10,9 +10,9 @@ fi
 
 if [ -f $FILE ]; then
     if [[ $FILE =~ "elf" ]]; then
-        echo "halt; flash write_image erase unlock $FILE; reset run" | nc localhost 4444
+        echo "reset init; flash write_image erase unlock $FILE; reset run" | nc localhost 4444
     else
-        echo "halt; flash write_image erase unlock $FILE 0x0; reset run" | nc localhost 4444
+        echo "reset init; flash write_image erase unlock $FILE 0x0; verify_image $FILE; reset run" | nc localhost 4444
     fi
 
 else
