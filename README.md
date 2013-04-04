@@ -52,7 +52,7 @@ with contents:
 
 upload bootloader.bin
 
-       ./upload-openocd.sh bootloader.bin
+	./upload-openocd.sh bootloader.bin
 
 second file starts at 0x2000
 
@@ -84,5 +84,17 @@ Then upload
 
      ./upload-bootloader.sh Blink/build/blink.bin
 
+## Debugging
+
+Make sure openocd is running.
+
+	arm-none-eabi-gdb ./build/blink.elf
+	(gdb) target remote localhost:3333
+	
+gdb will think the target is paused, but it's actually running, so start by continuing the target:
+	
+	(gdb) continue
+
+Now you can break the target with Ctrl-C, and use gdb as normal
 
 [vsdev]: http://dev.frozeneskimo.com/notes/cortex_cmsis/

@@ -2,7 +2,7 @@
 
 #include "LPC17xx.h"
 
-#define PAUSE 5000000
+#define PAUSE 1000000
 
 int pause() {
 	int i,j,k;
@@ -12,7 +12,11 @@ int pause() {
 	return k;
 }
 
-extern void hest();
+
+void SysTick_Handler(void) {
+	LPC_GPIO1->FIOCLR3 = 0x20;
+	
+}
 
 int main() {
 	int result = 0;
@@ -27,12 +31,15 @@ int main() {
 	// 	
 	// }
 
+	SysTick_Config(1000000);
 
     //LPC_GPIO1->FIODIR = 0xffffffff;
 	//LPC_GPIO1->FIOCLR = 0xffffffff;		/* turn off all the LEDs */
     //LPC_GPIO1->FIOSET = 0xffffffff;
     //LPC_GPIO1->FIOCLR = 1 << 29;		/* turn off all the LEDs */
     LPC_GPIO1->FIODIR = 1 << 29;
+	LPC_GPIO1->FIOCLR3 = 0x20;
+	//LPC_GPIO1->FIOSET3 = 0x20;
 	
 	while(1)
 	{
@@ -40,29 +47,11 @@ int main() {
 		
 		pause();
 		
-		LPC_GPIO1->FIOCLR3 = 0x20;
+		//LPC_GPIO1->FIOCLR3 = 0x20;
 
 			//return;
 		pause();
 				
-// 		int i=0;
-// 		for (i=0;i<32;i++) {
-// 			LPC_GPIO1->FIODIR = 1 << i;
-// 			LPC_GPIO1->FIOSET = 1 << i;
-// 		}
-// //        LPC_GPIO1->FIOSET = 1 << 29;
-// 			//LPC_GPIO1->FIOCLR = 0xffffffff;		/* turn off all the LEDs */
-// 
-//         //for(j = 1000000; j > 0; j--);
-// 
-// 		for (i=0;i<32;i++) {
-// 			LPC_GPIO1->FIODIR = 1 << i;
-// 			LPC_GPIO1->FIOCLR = 1 << i;
-// 		}
-// 
-			//LPC_GPIO1->FIOSET = 0xffffffff;		/* turn off all the LEDs */
-	    
-//		LPC_GPIO1->FIOCLR = 1 << 29;
 	}
     
     

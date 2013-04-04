@@ -9,7 +9,12 @@ if [ ! $# == 1 ]; then
 fi
 
 if [ -f $FILE ]; then
-    echo "halt; flash write_image erase unlock $FILE 0x0; reset run" | nc localhost 4444
+    if [[ $FILE =~ "elf" ]]; then
+        echo "halt; flash write_image erase unlock $FILE; reset run" | nc localhost 4444
+    else
+        echo "halt; flash write_image erase unlock $FILE 0x0; reset run" | nc localhost 4444
+    fi
+
 else
     echo "File not found!"
     exit 1

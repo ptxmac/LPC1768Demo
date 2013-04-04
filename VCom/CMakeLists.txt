@@ -1,4 +1,4 @@
-project(blink)
+project(serial)
 
 cmake_minimum_required(VERSION 2.8)
 
@@ -17,10 +17,15 @@ endif()
 add_definitions(-D__USE_CMSIS=1)
 
 add_executable(${PROJECT_NAME}.elf
-	blink.c
+	main_serial.c
+	cr_startup_lpc17.c
 	system_LPC17xx.c
 	core_cm3.c
-	cr_startup_lpc17.c
+	serial_fifo.c 
+	usbhw_lpc.c 
+	usbinit.c
+	usbstdreq.c
+	usbcontrol.c
 )
 
 add_custom_command(OUTPUT ${PROJECT_NAME}.tmp
