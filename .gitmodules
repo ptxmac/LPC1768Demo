@@ -1,0 +1,3 @@
+[submodule "lpc17xx.cmsis.driver.library"]
+	path = lpc17xx.cmsis.driver.library
+	url = https://github.com/scottellis/lpc17xx.cmsis.driver.library.git
